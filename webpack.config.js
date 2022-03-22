@@ -19,9 +19,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader']      
+        test: /\.scss$/i,
+        use: [
+          'style-loader', // Inject styles into DOM
+          'css-loader', // Second-Step: Turns css into common js
+          "sass-loader" // First-Step: Turns sass into css
+        ]      
       },
+      // {
+      //   test: /\.css$/i,
+      //   use: ['style-loader', 'css-loader']      
+      // },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource'      
