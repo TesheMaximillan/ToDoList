@@ -1,38 +1,10 @@
 import './main.scss';
+import './asset/icons/sprite.svg';
+import { addTask } from './modules/controlList';
 
-const listContainer = document.querySelector('.list-container__items');
+const form = document.querySelector('.list-container__list-content');
 
-const tasks = [
-  {
-    description: 'Standup Team',
-    completed: false,
-    index: 3,
-  },
-  {
-    description: 'Morning Session',
-    completed: true,
-    index: 1,
-  },
-  {
-    description: 'Coding Partner',
-    completed: false,
-    index: 2,
-  },
-];
-
-tasks.sort((a, b) => a.index - b.index);
-
-tasks.forEach((e) => {
-  const li = document.createElement('li');
-  const input = document.createElement('input');
-  const span = document.createElement('span');
-  input.type = 'checkbox';
-  li.className = 'list-container__items--item';
-  span.className = '';
-  span.textContent = e.description;
-  li.append(input, span);
-  listContainer.appendChild(li);
-});
+addTask(form);
 
 const checkbox = document.querySelectorAll('input[type=checkbox]');
 
