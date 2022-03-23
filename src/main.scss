@@ -7,7 +7,6 @@
 
 @font-face {
   font-family: 'Roboto';
-  font-style: bold;
   font-weight: 700;
   src: url('./asset/fonts/Roboto-Bold.ttf');
 }
@@ -51,15 +50,30 @@ body {
   max-width: 40%;
   background-color: var(--white);
   margin: 10vh auto;
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-  border-radius: .5rem;
+  box-shadow: rgba(17, 17, 26, 0.05) 0 1px 0, rgba(17, 17, 26, 0.1) 0 0 8px;
+  border-radius: 0.5rem;
 
   &__title {
     padding: 2rem;
-    font-style: bold;
     border: 1px solid var(--grey);
     font-weight: 700;
     font-size: 1.8rem;
+  }
+
+  &__items {
+    &--item {
+      list-style: none;
+      border: 1px solid var(--grey);
+      display: flex;
+      padding: 2rem;
+      align-items: center;
+
+      input {
+        margin-right: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
   }
 
   &__search {
@@ -77,23 +91,6 @@ body {
 
       &::placeholder {
         font-style: italic;
-      }
-    }
-  }
-
-  &__items {
-
-    &--item {
-      list-style: none;
-      border: 1px solid var(--grey);
-      display: flex;
-      padding: 2rem;
-      align-items: center;
-
-      input {
-        margin-right: 1rem;
-        width: 1.5rem;
-        height: 1.5rem;
       }
     }
   }

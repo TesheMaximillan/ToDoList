@@ -1,31 +1,28 @@
-import _ from 'lodash';
 import './main.scss';
 
 const listContainer = document.querySelector('.list-container__items');
 
 const tasks = [
   {
-    description: "Standup Team",
+    description: 'Standup Team',
     completed: false,
-    index: 3
+    index: 3,
   },
   {
-    description: "Morning Session",
+    description: 'Morning Session',
     completed: true,
-    index: 1
+    index: 1,
   },
   {
-    description: "Coding Partner",
+    description: 'Coding Partner',
     completed: false,
-    index: 2
+    index: 2,
   },
-]
+];
 
-tasks.sort((a, b) => {
-  return a.index - b.index
-})
+tasks.sort((a, b) => a.index - b.index);
 
-tasks.forEach(e => {
+tasks.forEach((e) => {
   const li = document.createElement('li');
   const input = document.createElement('input');
   const span = document.createElement('span');
@@ -35,17 +32,16 @@ tasks.forEach(e => {
   span.textContent = e.description;
   li.append(input, span);
   listContainer.appendChild(li);
-})
+});
 
 const checkbox = document.querySelectorAll('input[type=checkbox]');
 
-const checkMark = input => {
+const checkMark = (input) => {
   input.addEventListener('change', () => {
     if (input.checked) {
       input.nextElementSibling.classList.add('checked');
-    }else input.nextElementSibling.classList.remove('checked');;
-  })
-}
+    } else input.nextElementSibling.classList.remove('checked');
+  });
+};
 
-checkbox.forEach(e => checkMark(e))
-
+checkbox.forEach((e) => checkMark(e));
