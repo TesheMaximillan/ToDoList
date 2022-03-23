@@ -1,14 +1,15 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Awesome Books
+# ToDo list
 
-> In this capstone project, I created a plain javascript project which is add a book title and it's author into localstorage and retrive the items to book list section.
+> In this project, I intended to use webpack and apply to ToDo List Project.
 
 ## Built With
 
 - HTML5
-- CSS3
 - JavaScript
+- SCSS
+- Webpack
 
 ## Methodology
 
@@ -18,7 +19,7 @@
 - JavaScript used for Dom Manipulation
 - JavaScript events are used
 - JavaScript objects to store and access data
-- Browser Local Storage
+- Proper webpack configuration
 - Semantic HTML Tag
 - CSS Box Model
 - CSS FlexBox
@@ -27,12 +28,21 @@
 
 ### Specific Requirements
 
-- `npm init -y` command used to create package.json file
-- ES6 Syntax is used
-- Codes are divided into modules
-- Method and functions are refactored with arrow functions
-- `let` and `const` are used instead of `var`
-- `Luxon` library is used for the current date
+- Set up a new project with webpack.
+- Create an index.html file and write your HTML markup here. 
+- Create an empty To Do List placeholder (<ul> element). 
+- The index.html file is set as a template using the HTML Webpack Plugin.
+
+- index.js file is created and set an array of some simple to do tasks (array of objects), and used microverse working time. 
+- Each task object contain three keys:
+  - description [string].
+  - completed [bool].
+  - index: [number].
+- Write a function to iterate over the tasks array and populate an HTML list item element for each task.
+- On page load render the dynamically created list of tasks in the dedicated placeholder. 
+- The list is appear in order of the index values for each task.
+- Create a main.scss and set rules for the To Do List. 
+- SCSS is be loaded by Webpack Style/SCSS Loader. 
 
 ## Working Device Screen Size
 
@@ -40,13 +50,11 @@
 
 ## Live Demo
 
-[Live Demo Link]( https://teshemaximillan.github.io/Awesome-Books-Modules/)
+[Live Demo Link]( https://teshemaximillan.github.io/ToDoList/)
 
 ## Screenshot
 
-![project screenshot](![Awesome Book Screenshot](https://user-images.githubusercontent.com/51437483/159142705-bf9f636c-ef50-46d5-a3cb-84d0b7ea0250.JPG))
-
-![project screenshot](![Awesome Book Screenshot](https://user-images.githubusercontent.com/51437483/159135872-8873034c-198c-4b56-9cd0-70091ad7b818.jpg))
+![project screenshot](![Awesome Book Screenshot](![ToDo List Screenshot](https://user-images.githubusercontent.com/51437483/159600175-d4c0d275-eb49-406c-a6b4-b4230e01efbe.JPG)))
 
 # Author
 
@@ -62,7 +70,7 @@
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/TesheMaximillan/Awesome-Books-Modules/issues).
+Feel free to check the [issues page](https://github.com/TesheMaximillan/ToDoList/issues).
 
 ## Show your support
 
