@@ -9,26 +9,6 @@ const task = {
   index: 0,
 };
 
-const displayTask = (listContainer, rotationIcon, notification) => {
-  tasks.sort((a, b) => a.index - b.index);
-  tasks.forEach((e) => {
-    const li = document.createElement('li');
-    const input = document.createElement('input');
-    const span = document.createElement('input');
-    const i = document.createElement('i');
-    i.classList.add('icon', 'fa-solid', 'fa-ellipsis-vertical', 'bar');
-
-    input.type = 'checkbox';
-    li.className = 'list-container__items--item';
-    span.className = 'task-name';
-    span.value = e.description;
-    li.append(input, span, i);
-    listContainer.appendChild(li);
-  });
-  rotationIcon.classList.add('spinner');
-  notification.textContent = tasks.length;
-};
-
 const addTask = (form) => {
   form.addEventListener('submit', (event) => {
     task.description = form.elements.list.value;
@@ -53,9 +33,25 @@ const removeTask = (index) => {
   window.localStorage.setItem('listItem', JSON.stringify(tasks));
 };
 
+
+const status = (index, type) => {
+  tasks[index].completed = type;
+};
+
 const removeCompletedTask = () => {
   for (let i = 0; i < tasks.length; i += 1) {
     if (tasks[i].completed === true) removeTask(i);
   }
   updateIndex();
+};
+
+const updateTask = (index, value) => {
+  tasks[index].description = value;
+  window.localStorage.setItem('listItem', JSON.stringify(tasks));
+};
+
+const allTasks = tasks;
+
+export {
+  addTask, removeTask, updateTask, status, removeCompletedTask, allTasks
 };
