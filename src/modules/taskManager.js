@@ -40,3 +40,16 @@ const addTask = (form) => {
     event.preventDefault();
   });
 };
+
+const updateIndex = () => {
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasks[i].index = i;
+  }
+};
+
+
+const removeTask = (index) => {
+  tasks.splice(index, 1);
+  updateIndex();
+  window.localStorage.setItem('listItem', JSON.stringify(tasks));
+};
