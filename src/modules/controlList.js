@@ -1,26 +1,28 @@
-import {
-  addTask,
-  removeCompletedTask,
-  removeTask,
-  status,
-  updateTask,
-} from './taskManager';
-
 const listContainer = document.querySelector('.list-container__items');
 const notification = document.querySelector('.notification');
-const rotationIcon = document.querySelector('.fa-arrows-rotate');
+const roration = document.querySelector('.fa-arrows-rotate');
 const form = document.querySelector('.list-container__list-content');
 
+let tasks = [];
+
+const storage = localStorage.getItem('listItem');
+tasks = storage === null ? [] : JSON.parse(storage);
+
+const task = {
+  description: '',
+  completed: false,
+  index: 0,
+};
+
+// Loading...
 const spinner = () => {
-  rotationIcon.classList.add('spinner');
+  roration.classList.add('spinner');
   setTimeout(() => {
-    rotationIcon.classList.remove('spinner');
+    roration.classList.remove('spinner');
   }, 2000);
 };
 
-addTask(form);
-
-const displayTask = (tasks) => {
+const displayTask = () => {
   tasks.sort((a, b) => a.index - b.index);
   tasks.forEach((e) => {
     const li = document.createElement('li');
@@ -30,6 +32,7 @@ const displayTask = (tasks) => {
     i.classList.add('icon', 'fa-solid', 'fa-ellipsis-vertical', 'bar');
 
     input.type = 'checkbox';
+    input.classList.add('checkbox');
     li.className = 'list-container__items--item';
     span.className = 'task-name';
     span.value = e.description;
@@ -39,61 +42,48 @@ const displayTask = (tasks) => {
   notification.textContent = tasks.length;
 };
 
-const checkMark = (i, checkbox) => {
-  checkbox[i].addEventListener('change', () => {
-    if (checkbox[i].checked) {
-      checkbox[i].classList.add('input-after');
-      checkbox[i].nextElementSibling.classList.add('checked');
-      status(i, true);
-    } else {
-      checkbox[i].classList.remove('input-after');
-      checkbox[i].nextElementSibling.classList.remove('checked');
-      status(i, false);
-    }
-  });
-};
+displayTask();
 
-const removeHighlight = (taskName) => {
-  taskName.forEach((e) => {
-    e.parentElement.classList.remove('list-highlight');
-    e.nextElementSibling.classList.remove('icon-delete');
-  });
-};
-
-const selectTask = (i, taskName, deleteList) => {
-  taskName[i].addEventListener('click', () => {
-    removeHighlight(taskName);
-    taskName[i].parentElement.classList.add('list-highlight');
-    taskName[i].nextElementSibling.classList.add('icon-delete');
-
-    deleteList[i].addEventListener('click', () => {
-      removeTask(i);
-      window.location.reload();
-    });
-
-    taskName[i].addEventListener('input', () => {
-      updateTask(i, taskName[i].value);
-    });
-  });
-};
-
-const checkList = (checkbox) => {
-  for (let i = 0; i < checkbox.length; i += 1) {
-    checkMark(i, checkbox);
+const updateIndex = () => {
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasks[i].index = i;
   }
 };
 
-const selectATask = (taskName, deleteList) => {
-  for (let i = 0; i < taskName.length; i += 1) {
-    selectTask(i, taskName, deleteList);
-  }
-};
-
-const clearCompletedTask = (clearButton) => {
-  clearButton.addEventListener('click', () => {
-    removeCompletedTask();
+const addTask = () => {
+  form.addEventListener('submit', (event) => {
+    task.description = form.elements.list.value;
+    task.index = tasks.length;
+    tasks.push(task);
+    localStorage.setItem('listItem', JSON.stringify(tasks));
+    form.elements.list.value = '';
     window.location.reload();
+    event.preventDefault();
   });
 };
 
-export { spinner, displayTask, checkList, selectATask, clearCompletedTask };
+const removeTask = (index) => {
+  tasks.splice(index, 1);
+  updateIndex();
+  window.localStorage.setItem('listItem', JSON.stringify(tasks));
+};
+
+const removeCompletedTask = () => {
+  for (let i = 0; i < tasks.length; i += 1) {
+    if (tasks[i].completed === true) removeTask(i);
+  }
+  updateIndex();
+};
+
+const updateTask = (index, value) => {
+  tasks[index].description = value;
+  window.localStorage.setItem('listItem', JSON.stringify(tasks));
+};
+
+const status = (index, type) => {
+  tasks[index].completed = type;
+};
+
+export {
+  addTask, removeTask, updateTask, status, removeCompletedTask, spinner,
+};
