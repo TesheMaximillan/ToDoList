@@ -19,6 +19,7 @@
   --strike: rgb(119, 119, 119);
   --strike-light: rgb(172, 171, 171);
   --mark: #2e8ae6;
+  --highlight: #fffeca;
 }
 
 // ///////////////////////////// Global Reset
@@ -49,7 +50,7 @@ body {
 .list-container {
   display: flex;
   flex-direction: column;
-  max-width: 40%;
+  max-width: 35%;
   background-color: var(--white);
   margin: 10vh auto;
   box-shadow: rgba(17, 17, 26, 0.05) 0 1px 0, rgba(17, 17, 26, 0.1) 0 0 8px;
@@ -62,42 +63,93 @@ body {
     border: 1px solid var(--grey);
     font-weight: 700;
     font-size: 1.8rem;
+
+    .icon-container {
+      position: relative;
+      display: flex;
+      width: 2.5rem;
+      height: 2.5rem;
+      justify-content: flex-end;
+
+      .icon {
+        position: relative;
+        align-self: flex-end;
+        margin-right: .5rem;
+      }
+
+      .notification {
+        position: absolute;
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: red;
+        border: 2px solid var(--white);
+        border-radius: 50%;
+        color: var(--white);
+        z-index: 5;
+        font-size: .9rem;
+        text-align: center;
+      }
+    }
   }
 
   &__items {
+    max-height: calc(80vh - 18.26rem);
+    overflow-y: auto;
+
     &--item {
       list-style: none;
+      padding: 0 2rem;
       border: 1px solid var(--grey);
       display: flex;
-      padding: 2rem;
       align-items: center;
+      cursor: pointer;
 
       input {
         margin-right: 1rem;
         width: 1.5rem;
         height: 1.5rem;
         position: relative;
+      }
 
-        &::after {
-          display: none;
-          content: '\f00c';
-          font: var(--fa-font-solid);          
-          position: absolute;
-          color: var(--mark);
-          width: 100%;
-          height: 100%;
-          top: 0;
-          bottom: 0;
-          background-color: var(--white);
-        }
+      .input-after::after {
+        content: '\f00c';
+        font: var(--fa-font-solid);
+        position: absolute;
+        color: var(--mark);
+        width: 100%;
+        height: 100%;
+        background-color: var(--white);
       }
 
       .task-name {
         flex: 2;
+        padding: 2.84rem 0;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+
+        &:focus {
+          cursor: default;
+        }
       }
 
-      .icon-list {
+      .bar {
+        width: 1rem;
+      }
 
+      .icon-delete {
+        position: relative;
+        &::after {
+          content: '\f2ed';
+          font: var(--fa-font-solid);
+          position: absolute;
+          left: -50%;
+          width: 100%;
+          height: 100%;
+          background-color: var(--white);
+        }
       }
     }
   }
@@ -122,6 +174,14 @@ body {
         font-style: italic;
       }
     }
+
+    &--btn {
+      border: none;
+      background: none;
+      .icon {
+        transform: rotate(90deg);
+      }  
+    }
   }
 
   &__remove-all {
@@ -144,7 +204,7 @@ body {
 
 @media only screen and (max-width: 1100px) and (min-width: 768px) {
   .list-container {
-    max-width: 60%;
+    max-width: 50%;
   }
 }
 
@@ -163,5 +223,29 @@ body {
   color: var(--strike-light);
   font-size: 1.6rem;
   cursor: pointer;
+
+  &:hover {
+    color: var(--dark-grey);
+  }
 }
 
+.list-highlight {
+  background-color: var(--highlight);
+
+  .input-after::after {
+    background-color: var(--highlight);
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.spinner {
+  animation: rotation 2s infinite linear;
+}
