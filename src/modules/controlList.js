@@ -2,9 +2,11 @@ const listContainer = document.querySelector('.list-container__items');
 const notification = document.querySelector('.notification');
 const rotationIcon = document.querySelector('.fa-arrows-rotate');
 
-setTimeout(() => {
-  roration.classList.remove('spinner');
-}, 2000);
+const spinner = () => {
+  setTimeout(() => {
+    roration.classList.remove('spinner');
+  }, 2000);
+}
 
 
 
@@ -13,12 +15,6 @@ setTimeout(() => {
 displayTask();
 
 
-const removeCompletedTask = () => {
-  for (let i = 0; i < tasks.length; i += 1) {
-    if (tasks[i].completed === true) removeTask(i);
-  }
-  updateIndex();
-};
 
 const updateTask = (index, value) => {
   tasks[index].description = value;
