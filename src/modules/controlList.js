@@ -6,16 +6,7 @@ setTimeout(() => {
   roration.classList.remove('spinner');
 }, 2000);
 
-let tasks = [];
 
-const storage = localStorage.getItem('listItem');
-tasks = storage === null ? [] : JSON.parse(storage);
-
-const task = {
-  description: '',
-  completed: false,
-  index: 0,
-};
 
 const displayTask = () => {
   tasks.sort((a, b) => a.index - b.index);
