@@ -9,7 +9,7 @@ const task = {
   index: 0,
 };
 
-const displayTask = () => {
+const displayTask = (listContainer, rotationIcon, notification) => {
   tasks.sort((a, b) => a.index - b.index);
   tasks.forEach((e) => {
     const li = document.createElement('li');
@@ -25,7 +25,18 @@ const displayTask = () => {
     li.append(input, span, i);
     listContainer.appendChild(li);
   });
-  roration.classList.add('spinner');
+  rotationIcon.classList.add('spinner');
   notification.textContent = tasks.length;
 };
 
+const addTask = (form) => {
+  form.addEventListener('submit', (event) => {
+    task.description = form.elements.list.value;
+    task.index = tasks.length;
+    tasks.push(task);
+    localStorage.setItem('listItem', JSON.stringify(tasks));
+    form.elements.list.value = '';
+    window.location.reload();
+    event.preventDefault();
+  });
+};
