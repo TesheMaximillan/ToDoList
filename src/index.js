@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import './main.scss';
 import { addTask, spinner } from './modules/controlList';
 import { clearCompletedTasks, markTask, selectATask } from './modules/taskManager';

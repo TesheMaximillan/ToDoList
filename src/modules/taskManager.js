@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import {
   removeCompletedTask, removeTask, status, updateTask,
 } from './controlList';
