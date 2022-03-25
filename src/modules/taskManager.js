@@ -33,7 +33,7 @@ const markTask = () => {
   }
 };
 
-
+// Select a task, then, either update that specific task or delete that task
 const selectATask = () => {
   for (let i = 0; i < taskName.length; i += 1) {
     taskName[i].addEventListener('click', () => {
