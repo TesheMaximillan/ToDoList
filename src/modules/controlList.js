@@ -22,6 +22,7 @@ const spinner = () => {
   }, 2000);
 };
 
+// Display tasks on eash list-item
 const displayTask = () => {
   tasks.sort((a, b) => a.index - b.index);
   tasks.forEach((e) => {
@@ -44,12 +45,14 @@ const displayTask = () => {
 
 displayTask();
 
+// Update Index after the list removal
 const updateIndex = () => {
   for (let i = 0; i < tasks.length; i += 1) {
     tasks[i].index = i;
   }
 };
 
+// Add task
 const addTask = () => {
   form.addEventListener('submit', (event) => {
     task.description = form.elements.list.value;
@@ -62,24 +65,27 @@ const addTask = () => {
   });
 };
 
+// Remove single Task
 const removeTask = (index) => {
   tasks.splice(index, 1);
   updateIndex();
   window.localStorage.setItem('listItem', JSON.stringify(tasks));
 };
 
+// Remove completed task using filter method
 const removeCompletedTask = () => {
-  for (let i = 0; i < tasks.length; i += 1) {
-    if (tasks[i].completed === true) removeTask(i);
-  }
+  tasks = tasks.filter((task) => task.completed === false);
   updateIndex();
+  window.localStorage.setItem('listItem', JSON.stringify(tasks));
 };
 
+// Update Task
 const updateTask = (index, value) => {
   tasks[index].description = value;
   window.localStorage.setItem('listItem', JSON.stringify(tasks));
 };
 
+// Modify the list completed section
 const status = (index, type) => {
   tasks[index].completed = type;
 };

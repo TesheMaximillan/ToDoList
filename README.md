@@ -32,13 +32,17 @@
 - Create an index.html file and write your HTML markup here. 
 - Create an empty To Do List placeholder (<ul> element). 
 - The index.html file is set as a template using the HTML Webpack Plugin.
-
 - Remove all hardcoded items from the tasks array
 - A new javascript file created for the new functionality
 - A function is implemented for adding a new task
 - A function is implemented for deleting a task
 - A function is implemented for editing task description
 - Incase of deletion the order of the index is shifted and rearranged
+- Add a new JavaScript file and import it as a module:
+- Add event listener to the checkbox (change).
+- Update items object's value for completed key upon user actions.
+- Implement a function for the "Clear all completed" button (use filter() method).
+- Store the updated array of items in local storage, so the user gets the correct list values after the page reloads.
 - Changes are saved to local storage
 - Each task object contain three keys:
   - description [string].
