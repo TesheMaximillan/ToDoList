@@ -22,6 +22,7 @@ const spinner = () => {
   }, 2000);
 };
 
+// Display tasks on eash list-item
 const displayTask = () => {
   tasks.sort((a, b) => a.index - b.index);
   tasks.forEach((e) => {
@@ -44,6 +45,7 @@ const displayTask = () => {
 
 displayTask();
 
+// Update Index after the list removal
 const updateIndex = () => {
   for (let i = 0; i < tasks.length; i += 1) {
     tasks[i].index = i;
