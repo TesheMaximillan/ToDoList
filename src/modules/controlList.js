@@ -85,6 +85,7 @@ const updateTask = (index, value) => {
   window.localStorage.setItem('listItem', JSON.stringify(tasks));
 };
 
+// Modify the list completed section
 const status = (index, type) => {
   tasks[index].completed = type;
 };
