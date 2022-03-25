@@ -53,6 +53,7 @@ const selectATask = () => {
   }
 };
 
+// Clear completed task and and reload the page
 const clearCompletedTasks = () => {
   clearButton.addEventListener('click', () => {
     removeCompletedTask();
