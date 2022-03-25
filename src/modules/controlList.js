@@ -69,10 +69,9 @@ const removeTask = (index) => {
 };
 
 const removeCompletedTask = () => {
-  for (let i = 0; i < tasks.length; i += 1) {
-    if (tasks[i].completed === true) removeTask(i);
-  }
+  tasks = tasks.filter((task) => task.completed === false);
   updateIndex();
+  window.localStorage.setItem('listItem', JSON.stringify(tasks));
 };
 
 const updateTask = (index, value) => {
