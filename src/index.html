@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/030a66e167.js" crossorigin="anonymous"></script>
     <title>ToDo List</title>
 </head>
+
 <body>
     <div class="list-container">
         <div class="list-container__title">
             <p class="title-text">Demo</p>
+            <div class="icon-container">
+                <i class="icon fa-solid fa-arrows-rotate"></i>
+                <div class="notification"></div>
+            </div>
         </div>
-        <div class="list-container__search">
-            <input type="text" placeholder="Add to your list...">
-        </div>
-        <ul class="list-container__items">
-        </ul>
+        <form class="list-container__list-content">
+            <label for="list"></label>
+            <input type="text" name="list" id="list" placeholder="Add to your list..." />
+            <button type="submit" class="list-container__list-content--btn">
+                <i class="icon fa-solid fa-turn-down"></i> 
+            </button>
+        </form>
+        <ul class="list-container__items"></ul>
+        <button type="button" class="list-container__remove-all">Clear all completed</button>
     </div>
 </body>
+
 </html>

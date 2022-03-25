@@ -33,7 +33,13 @@
 - Create an empty To Do List placeholder (<ul> element). 
 - The index.html file is set as a template using the HTML Webpack Plugin.
 
-- index.js file is created and set an array of some simple to do tasks (array of objects), and used microverse working time. 
+- Remove all hardcoded items from the tasks array
+- A new javascript file created for the new functionality
+- A function is implemented for adding a new task
+- A function is implemented for deleting a task
+- A function is implemented for editing task description
+- Incase of deletion the order of the index is shifted and rearranged
+- Changes are saved to local storage
 - Each task object contain three keys:
   - description [string].
   - completed [bool].
@@ -46,7 +52,7 @@
 
 ## Working Device Screen Size
 
-- All screen size
+- All screen size (4 screen sizes)
 
 ## Live Demo
 
@@ -54,7 +60,7 @@
 
 ## Screenshot
 
-![project screenshot](![Awesome Book Screenshot](![ToDo List Screenshot](https://user-images.githubusercontent.com/51437483/159600175-d4c0d275-eb49-406c-a6b4-b4230e01efbe.JPG)))
+![project screenshot](![Awesome Book Screenshot](![ToDo List Screenshot](![ToDo List Screenshot-2](![ToDo List Screenshot-2](https://user-images.githubusercontent.com/51437483/160021639-84cc5828-c0f8-44a5-bf38-a7d91b2e10e0.JPG)))))
 
 # Author
 

@@ -1,47 +1,22 @@
 import './main.scss';
+import { addTask, spinner } from './modules/controlList';
+import { clearCompletedTasks, markTask, selectATask } from './modules/taskManager';
 
-const listContainer = document.querySelector('.list-container__items');
+// Load and display the number of tasks
+spinner();
 
-const tasks = [
-  {
-    description: 'Standup Team',
-    completed: false,
-    index: 3,
-  },
-  {
-    description: 'Morning Session',
-    completed: true,
-    index: 1,
-  },
-  {
-    description: 'Coding Partner',
-    completed: false,
-    index: 2,
-  },
-];
+// Create and Add new task
+addTask();
 
-tasks.sort((a, b) => a.index - b.index);
+/**
+ * 1. Highlight the selected task
+ * 2. Remove the list when the delete icon is pressed
+ * 3. Update task list when the value of the task is changed
+ */
+selectATask();
 
-tasks.forEach((e) => {
-  const li = document.createElement('li');
-  const input = document.createElement('input');
-  const span = document.createElement('span');
-  input.type = 'checkbox';
-  li.className = 'list-container__items--item';
-  span.className = '';
-  span.textContent = e.description;
-  li.append(input, span);
-  listContainer.appendChild(li);
-});
+// Select or Unselect for task status <completed or Not>
+markTask();
 
-const checkbox = document.querySelectorAll('input[type=checkbox]');
-
-const checkMark = (input) => {
-  input.addEventListener('change', () => {
-    if (input.checked) {
-      input.nextElementSibling.classList.add('checked');
-    } else input.nextElementSibling.classList.remove('checked');
-  });
-};
-
-checkbox.forEach((e) => checkMark(e));
+// Clear complted tasks
+clearCompletedTasks();
