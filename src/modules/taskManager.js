@@ -8,6 +8,7 @@ const taskName = document.querySelectorAll('.task-name');
 const deleteList = document.querySelectorAll('.bar');
 const clearButton = document.querySelector('.list-container__remove-all');
 
+// Remove the selected color from all of the tasks <Yellowish color>
 const removeHighlight = () => {
   taskName.forEach((e) => {
     e.parentElement.classList.remove('list-highlight');
@@ -15,6 +16,7 @@ const removeHighlight = () => {
   });
 };
 
+// Mark task as completed or not, and update the task
 const markTask = () => {
   for (let i = 0; i < checkbox.length; i += 1) {
     checkbox[i].addEventListener('change', () => {
@@ -30,6 +32,7 @@ const markTask = () => {
     });
   }
 };
+
 
 const selectATask = () => {
   for (let i = 0; i < taskName.length; i += 1) {
