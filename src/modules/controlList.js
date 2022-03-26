@@ -22,21 +22,24 @@ const spinner = () => {
   }, 2000);
 };
 
+const createElement = (element, className = [], text = '', type = '', value = '', name = '') => {
+  const newElement = document.createElement(element);
+  newElement.classList.add(...className);
+  newElement.textContent = text;
+  newElement.type = type;
+  newElement.value = value;
+  newElement.name = name;
+  return newElement;
+};
+
 // Display tasks on eash list-item
 const displayTask = () => {
   tasks.sort((a, b) => a.index - b.index);
   tasks.forEach((e) => {
-    const li = document.createElement('li');
-    const input = document.createElement('input');
-    const span = document.createElement('input');
-    const i = document.createElement('i');
-    i.classList.add('icon', 'fa-solid', 'fa-ellipsis-vertical', 'bar');
-
-    input.type = 'checkbox';
-    input.classList.add('checkbox');
-    li.className = 'list-container__items--item';
-    span.className = 'task-name';
-    span.value = e.description;
+    const i = createElement('i', ['icon', 'fa-solid', 'fa-ellipsis-vertical', 'bar']);
+    const input = createElement('input', ['checkbox'], '', 'checkbox');
+    const span = createElement('input', ['task-name'], '', '', e.description);
+    const li = createElement('li', ['list-container__items--item']);
     li.append(input, span, i);
     listContainer.appendChild(li);
   });
