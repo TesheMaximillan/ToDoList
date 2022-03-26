@@ -22,7 +22,7 @@ const spinner = () => {
   }, 2000);
 };
 
-const createElement = (element, className = [], text = '', type = '', value = '', name = '') => {
+const createElement = (element = '', className = [''], text = '', type = '', value = '', name = '') => {
   const newElement = document.createElement(element);
   newElement.classList.add(...className);
   newElement.textContent = text;
